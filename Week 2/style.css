@@ -1,50 +1,97 @@
 body {
     margin: 0;
-    background-color: antiquewhite;
+    background-color: #b3cbaa76;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 img {
-    max-width: 100%
+    width: 500px; 
+    max-width: 100%; 
+    height: auto; 
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
-/*TOP NAVIGATION BAR */
+/* TOP NAVIGATION BAR */
 header nav {
-    background-color: green;
+    background-color: #b3cbaa;
 }
-header nav ul{
+header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
-   }
+    flex-direction: row;
+    justify-content: left;
+}
 
-   header nav li {
+header nav li {
     padding: 10px 20px;
-   }
+}
 
-   header nav a{
+header nav a {
+}
 
-   }
+/* Hide all text and images ???? */
+.text, .image {
+    display: none;
+}
 
-   /*TABLET*/
-    @media screen and (min-width: 768px){
-        header nav ul {
-            flex-direction: row;
-            justify-content: space-evenly;
-        }
-        header nav ul {
-            background-color: lightgoldenrodyellow;
-        }
+
+@media screen and (max-width: 767px) {
+    .text-costco {
+        display: block;
+    }
+    .image-costco {
+        display: block; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Tablet View */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header nav ul {
+        background-color: rgb(255, 219, 88);
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    body {
+        background-color: rgba(255, 219, 88, 0.508);
     }
 
-    /*Desktop View*/ @media screen and (min-width: 1024px){
-        header nav ul {
-            justify-content: flex-end;
-        }
-        main {
-            width: 1024px;
-            margin: auto;
-        }
+    
+    .text-hawaiano {
+        display: block;
     }
+    .image-hawaiano { 
+        display: block; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Desktop View */
+@media screen and (min-width: 1024px) {
+    header nav ul {
+        background-color: #9a382d;
+        justify-content: flex-end;
+    }
+    body {
+        background-color: #9a382d7c;
+    }
+    main {
+        width: 1024px;
+        margin: auto;
+    }
+
+    .text-texas {
+        display: block;
+    }
+    .image-texas {
+        display: block; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

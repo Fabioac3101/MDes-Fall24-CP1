@@ -63,5 +63,4 @@ function checkSlider() {
 
 
 
-// Add event listener to the slider
 slider.addEventListener("input", checkSlider);

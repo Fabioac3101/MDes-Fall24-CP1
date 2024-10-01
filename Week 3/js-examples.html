@@ -37,7 +37,6 @@
         function changeImage() {
             console.log(mainI.src);
 
-            // Use .includes() to check for a specific part of the filename
             if(mainI.src.includes("Costco.png")) {
                 mainI.src = "images/hawaiano.png";
             } else {
@@ -47,7 +46,6 @@
 
         imgButton.addEventListener("click", changeImage);
 
-        // Event listener for background color change
         clrButton.addEventListener("click", function() {
             let valueR = Math.floor(Math.random() * 255);
             let valueG = Math.floor(Math.random() * 255);

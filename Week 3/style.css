@@ -50,6 +50,6 @@ header nav li {
 }
 
 .image-container img {
-  max-width: 300px;
+  max-width: 70%;
   height: auto;
 }

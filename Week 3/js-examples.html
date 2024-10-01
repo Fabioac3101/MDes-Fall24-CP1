@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What JS can do</title>
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header id="myHeader">
+        <button id="colorBtn">Random color!</button>
+        <button id="imgBtn">Change Image!</button>
+    </header>
+
+    <main id="myMainElem">
+        <img src="images/Costco.png" alt="Costco1" id="mainImg">
+    </main>
+
+    <footer>
+    </footer>
+    
+    <script>
+        let imgButton = document.getElementById("imgBtn");
+        let mainI = document.getElementById("mainImg");
+        let mainE = document.getElementById("myMainElem");
+        let clrButton = document.getElementById("colorBtn");
+
+        let newHeader = document.createElement('h1');
+        newHeader.textContent = "Hello, World!";
+        mainE.insertBefore(newHeader, mainI);
+
+        function changeImage() {
+            console.log(mainI.src);
+
+            // Use .includes() to check for a specific part of the filename
+            if(mainI.src.includes("Costco.png")) {
+                mainI.src = "images/hawaiano.png";
+            } else {
+                mainI.src = "images/Costco.png";
+            }
+        }
+
+        imgButton.addEventListener("click", changeImage);
+
+        // Event listener for background color change
+        clrButton.addEventListener("click", function() {
+            let valueR = Math.floor(Math.random() * 255);
+            let valueG = Math.floor(Math.random() * 255);
+            let valueB = Math.floor(Math.random() * 255);
+
+            console.log("Red: " + valueR);
+            console.log("Green: " + valueG);
+            console.log("Blue: " + valueB);
+
+            mainE.style.backgroundColor = "rgb(" + valueR + ", " + valueG + ", " + valueB + ")";
+        });
+    </script>
+</body>
+</html>

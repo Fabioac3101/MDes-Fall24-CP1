@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the Hot Dog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://www.w3schools.com/howto/howto_js_rangeslider.asp">Help</a></li>
+                <li><a href="https://i.insider.com/5d1cb00321a86112771e96f2?width=1200&format=jpeg">Jelp</a></li>
+                <li><a href="https://img.freepik.com/premium-photo/funny-hot-dog_726113-2959.jpg">Chelp</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Find the Hot Dog <br>
+    <em>Slider Puzzle</em></h1>
+
+    <div class="slider-container">
+        <label for="slider">Adjust the slider to reveal the Glizzy in its true form</label>
+        <input type="range" min="0" max="255" value="0" id="slider" class="slider">
+    </div>
+
+    <div class="image-container" id="puzzleImage">
+        <img src="images/Hotdog.jpg" alt="Puzzle Image">
+    </div>
+    <div class="image-container" id="decoy1"> 
+        <img src="images/decoy1.webp" alt="decoy1">
+    </div>
+    <div class="image-container" id="decoy2">
+        <img src="images/decoy2.webp" alt="decoy2">
+    </div>
+    <div class="image-container" id="decoy3">
+        <img src="images/decoy3.webp" alt="decoy3">
+    </div>
+    <div class="image-container" id="decoy4">
+        <img src="images/decoy4.webp" alt="decoy4">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

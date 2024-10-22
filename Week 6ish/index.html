@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems and Prototype Article Analysis</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            text-align: center; 
+        }
+
+        #content {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            border: 2px solid #ccc;
+            padding: 20px;
+            font-size: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        #scrolling-text {
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        #scrolling-text span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Systems and Prototype Article Analysis</h1>
+        <textarea id="text-area" placeholder="Reading Responses:
+
+        Programming system design (https://programmingdesignsystems.com/introduction/)
+        
+        “A graphic designer is someone who communicates a piece of content in shape and color”
+        
+        What a limiting definition of a graphic designer “communicates a piece of content in shape and color.” A phrase like this sets the tone that the author already does not value the work of the graphic designer. The reduction of this field reflects so many of the negative connotations of that career; it's undervalued by clients, anyone can do it, “it's just graphics.” A better categorization to me while still conveying the same message would be: A graphic design is a visual communicator that shapes perception through the interplay of form, meaning and aesthetic. 
+        
+        “For a field rooted in the fine arts, this has been a difficult transition”
+        
+        I get why the author would self publish; his analysis of graphic designers is so biased. To say that it is rooted in fine arts again limits the scope of a real analysis. Sure maybe it might be historically but there is a clear difference between art school and design school. Art school focuses on self-expression and personal exploration, design school emphasizes problem solving for specific users or contexts. 
+        He also implies that graphic designers if not embracing new technology will become irrelevant. Bull. As long as there is perception there will be graphic designers, if we all moved to the metaverse in a non physical place, will there still be a need for those to communicate visually, will the coders who dictate this digital world not need to understand composition and hierarchy? Will this not mean that they become the new graphic designers?
+        
+        “This book is the result of a simple question: What happens when we try to redefine the graphic design curriculum using a programming language as the tool for the designer?”
+        
+        What happens? It seems that what this intro is trying to encourage is that for graphic designers the only path forward out of obsolescence is to adapt to new technologies. At the core I agree with the statement the author makes, new skillsets are crucial to the success of any designer. But what happens when we try to adapt a curriculum and change workflows, will the code dictate the design? The author states that illustrator and sketch fail at prototyping digital systems, well what if JS5 fails at prototyping graphic interfaces? Again, I agree with the message but would sign off on this intro if it respected both fields and did not impose one field over the other. 
+        
+        
+        
+        
+        
+        
+        
+        Reading Responses: 
+        
+        What do Prototypes Prototype
+        https://hci.stanford.edu/courses/cs247/2012/readings/WhatDoPrototypesPrototype.pdf
+        
+        “Is a brick a prototype”
+        I love this question! This article I think does an excellent job at discussing not just the purpose of prototypes or the types but also asks what is a prototype? Designers, especially young designers, often get lost (myself included) in understanding what is the purpose of what we are doing, and how we can talk about our design choices in a non confusing way. This entire article can be summarized in that single question; yes it can! But that's not the point, the message is to understand the purpose and scenario for each prototype and best use our design communication skills to efficiently use a prototype. 
+        
+        “No single prototype could have represented the design of the future artifact at that time”
+        The 3D space planning application must have been a tremendous endeavor for 1990! In their shoes how could I talk about such a complex system, I don’t think I could. I would have to break it down into digestible moments that can help describe the design as a whole. That is what I love about interaction design, it's not a single piece but the sum of parts. The success of the entire vision relies on being able to effectively communicate to all the stakeholders an honest representation and often that might mean multiple prototypes done in various ways and learn from each subsequent model. 
+        
+        “The pizza box was a very efficient prototype”
+        I really hope when they billed the client they described in detail this part of the process! 
+        Design is not about over complicating, it's about forgetting and relearning. This reminds me of the brick quote, how can this pizza box become integral to the development of a tech product?! A simple solution that trimmed the fat and went straight to business, prototyping is awesome and out of the box moments like this encourage me to keep experimenting with the way we think about things. 
+        "></textarea>
+    </div>
+
+    <div id="scrolling-text">
+        <span>is a brick a prototype?</span>
+    </div>
+</body>
+</html>

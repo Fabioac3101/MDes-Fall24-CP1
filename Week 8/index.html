@@ -15,13 +15,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: auto; 
             margin: 0;
-            background-color: #fbcff5;
+            background-color: #f6daea;
             font-family: Arial, sans-serif;
             text-align: center;
-            overflow: hidden; 
-            
         }
         h1 {
             margin-bottom: 20px;
@@ -30,18 +28,33 @@
             border: none;
             width: 500px;
             height: 500px;
-            overflow: hidden; 
+        }
+        .reflection {
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
     <h1>Interactive p5.js Sketch</h1>
-    <iframe src="https://editor.p5js.org/Fabioac3101/full/R5N1DPtVf" width="500" height="500"></iframe>
+    <iframe src="https://editor.p5js.org/Fabioac3101/full/R5N1DPtVf"></iframe>
     <p>Instructions:</p>
     <p>Click and drag mouse to draw</p>
     <p>Press 'P' to create pattern</p>
     <p>Press 'D' to delete pattern</p>
+
+    <div class="reflection">
+        <p>The hardest part about creating a sketch in p5.js is knowing what to start with. Looking for some inspiration, I found myself browsing through the examples listed on <a href="https://p5js.org/examples/" target="_blank">p5.js examples</a>. The most interesting interaction I saw was a sketch called "Drawing Lines." I had no clue that one could draw in a program like this. I decided to use this as the starting point.</p>
+        
+        <p>In the sketch example, the strangest function I saw was "mouseDragged." This started a long journey in trying to get this to work. I initially thought that this was enough to start the drawing but realized that this only starts the drawing program when the mouse is clicked. It quickly snowballed into figuring out how to keep track and record the position of the mouse in order to place a circle pattern (through ellipses), then how to store the positioning so that it can be patterned.</p>
+
+        <p>After being able to pattern the drawing, I thought it would be nice to make it so that the user can add to the pattern and delete it to start over. The first try ended up working with an if statement reading which key was pressed and either allowing drawing or deleting it.</p>
+    </div>
 
 </body>
 </html>

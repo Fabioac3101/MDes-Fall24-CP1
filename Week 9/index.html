@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Oscillation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .carousel-button-prev {
+            left: 0;
+        }
+
+        .carousel-button-next {
+            right: 0;
+        }
+        #sketch-container {
+            width: 100%;
+            height: 400px; 
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        let index = 0;
+    
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.carousel img');
+            const totalSlides = slides.length;
+            
+            index = (index + step + totalSlides) % totalSlides;
+            
+            document.querySelector('.carousel').style.transform = `translateX(-${index * 100}%)`;
+        }
+    </script>
+
+<div class="carousel-container">
+    <div class="carousel">
+        <img src="photosforproject/sketch.jpeg" alt="Illustration">
+        <img src="photosforproject/P5js 1.JPG" alt="Ball in Sine">
+        <img src="photosforproject/P5js 1.5.JPG" alt="Falling Ball">
+        <img src="photosforproject/P5js 2.JPG" alt="Rising Ball">
+        <img src="photosforproject/P5js 3.JPG" alt="Color Overlay">
+    </div>
+
+    <button class="carousel-button carousel-button-prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="carousel-button carousel-button-next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+<div id="sketch-container">
+    <iframe src="https://editor.p5js.org/Fabioac3101/full/4NMji8LIU" frameborder="0" width="100%" height="400px"></iframe>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+</body>
+</html>

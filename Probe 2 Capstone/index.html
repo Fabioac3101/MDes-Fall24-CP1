@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated Wiki → Pixel Art</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1em;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    #title {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      color: #333;
+    }
+    #canvas-container {
+      border: 2px solid #888;
+      background: #fff;
+      margin-bottom: 1em;
+    }
+    #refresh-btn {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>From the depths of wiki to Pixel Art</h1>
+  <div id="title">Loading random article…</div>
+  <div id="canvas-container">
+    <canvas id="pixelCanvas" width="320" height="320"></canvas>
+  </div>
+  <button id="refresh-btn">Random Article</button>
+
+  <script>
+    function hashStringToInt(str) {
+      let hash = 0x811c9dc5;
+      for (let i = 0; i < str.length; i++) {
+        hash ^= str.charCodeAt(i);
+        hash = Math.imul(hash, 0x01000193) >>> 0;
+      }
+      return hash >>> 0;
+    }
+
+    function mulberry32(seed) {
+      return function() {
+        seed |= 0;
+        seed = (seed + 0x6D2B79F5) >>> 0;
+        let t = seed;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    const GRID_SIZE = 32;
+    let palette = [];
+    let gridIndices = [];
+    let canvas, ctx, cellSize;
+
+    function initPaletteAndGrid(seed) {
+      const rand = mulberry32(seed);
+      palette = [];
+      for (let i = 0; i < 4; i++) {
+        const r = Math.floor(150 + rand() * 105);
+        const g = Math.floor(150 + rand() * 105);
+        const b = Math.floor(150 + rand() * 105);
+        palette.push(`rgb(${r},${g},${b})`);
+      }
+
+      gridIndices = [];
+      for (let y = 0; y < GRID_SIZE; y++) {
+        const row = [];
+        for (let x = 0; x < GRID_SIZE; x++) {
+          const idx = Math.floor(rand() * palette.length);
+          row.push(idx);
+        }
+        gridIndices.push(row);
+      }
+    }
+
+    function drawGrid() {
+      for (let y = 0; y < GRID_SIZE; y++) {
+        for (let x = 0; x < GRID_SIZE; x++) {
+          const colorIndex = gridIndices[y][x];
+          ctx.fillStyle = palette[colorIndex];
+          ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+
+    function stepGrid() {
+      for (let y = 0; y < GRID_SIZE; y++) {
+        for (let x = 0; x < GRID_SIZE; x++) {
+          gridIndices[y][x] = (gridIndices[y][x] + 1) % palette.length;
+        }
+      }
+    }
+
+    function animate() {
+      stepGrid();
+      drawGrid();
+      requestAnimationFrame(animate);
+    }
+
+    async function fetchRandomWikiTitle() {
+      const endpoint =
+        'https://en.wikipedia.org/w/api.php?' +
+        new URLSearchParams({
+          action: 'query',
+          list: 'random',
+          rnnamespace: '0',
+          rnlimit: '1',
+          format: 'json',
+          origin: '*'
+        });
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      return data.query.random[0].title;
+    }
+
+    async function generateAnimatedArt() {
+      const titleDiv = document.getElementById('title');
+      titleDiv.textContent = 'Loading random article…';
+
+      try {
+        const title = await fetchRandomWikiTitle();
+        titleDiv.textContent = `Que?! "${title}"`;
+
+        const seed = hashStringToInt(title);
+
+        canvas = document.getElementById('pixelCanvas');
+        ctx = canvas.getContext('2d');
+        cellSize = canvas.width / GRID_SIZE;
+
+        initPaletteAndGrid(seed);
+        drawGrid();
+        requestAnimationFrame(animate);
+      } catch (err) {
+        console.error(err);
+        titleDiv.textContent = 'Error fetching article.';
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    document.getElementById('refresh-btn')
+      .addEventListener('click', () => {
+        const oldCanvas = document.getElementById('pixelCanvas');
+        const newCanvas = oldCanvas.cloneNode();
+        oldCanvas.parentNode.replaceChild(newCanvas, oldCanvas);
+        generateAnimatedArt();
+      });
+
+    window.onload = generateAnimatedArt;
+  </script>
+</body>
+</html>
